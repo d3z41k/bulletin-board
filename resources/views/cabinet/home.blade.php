@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
-@section('breadcrumbs')
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active">Cabinet</li>
-    </ul>
-@endsection
+@section('breadcrumbs', '')
 
 @section('content')
 <div class="card">
