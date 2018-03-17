@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-group">
-            <label for="slug" class="col-form-label">E-Mail Address</label>
+            <label for="slug" class="col-form-label">Slug</label>
             <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ old('slug', $region->slug) }}" required>
             @if ($errors->has('slug'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
