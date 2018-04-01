@@ -22,6 +22,9 @@ assets-dev:
 assets-watch:
 	docker-compose exec node yarn run watch
 
+memory:
+	sysctl -w vm.max_map_count=262144
+
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
 	sudo chown ${USER}:${USER} storage -R
