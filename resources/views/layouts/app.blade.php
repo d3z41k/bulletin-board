@@ -20,8 +20,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 Adverts
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -39,8 +38,7 @@
                         <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -49,12 +47,11 @@
                                 <a class="dropdown-item" href="{{ route('cabinet.home') }}">Cabinet</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
+                                       document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -64,16 +61,41 @@
             </div>
         </div>
     </nav>
+
+    @section('search')
+        <div class="search-bar pt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <form action="{{ route('adverts.index') }}" method="GET">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="text" value="{{ request('text') }}" placeholder="Search for...">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <button class="btn btn-light border" type="submit"><span class="fa fa-search"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3" style="text-align: right">
+                        <p><a href="{{ route('cabinet.adverts.create') }}" class="btn btn-success"><span class="fa fa-plus"></span> Add New Advertisement</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @show
 </header>
 
 <main class="app-content py-3">
     <div class="container">
-
         @section('breadcrumbs', Breadcrumbs::render())
         @yield('breadcrumbs')
-
         @include('layouts.partials.flash')
-
         @yield('content')
     </div>
 </main>
