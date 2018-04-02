@@ -5,7 +5,7 @@ services:
             context: ./
             dockerfile: docker/nginx.docker
         volumes:
-            - ./:/var/www
+            - appcode-rsync-sync:/var/www:nocopy
             - ./docker/nginx/ssl:/etc/nginx/ssl
         ports:
             - "8080:443"
@@ -16,7 +16,7 @@ services:
             context: ./
             dockerfile: docker/php-fpm.docker
         volumes:
-            - ./:/var/www
+            - appcode-rsync-sync:/var/www:nocopy
         links:
             - mysql
             - redis
@@ -32,7 +32,7 @@ services:
             context: ./
             dockerfile: docker/php-cli.docker
         volumes:
-            - ./:/var/www
+            - appcode-rsync-sync:/var/www:nocopy
         links:
             - mysql
             - redis
@@ -79,3 +79,6 @@ services:
             - ./storage/docker/elasticsearch:/usr/share/elasticsearch/data
         ports:
             - "9201:9200"
+volumes:
+  appcode-rsync-sync:
+    external: true

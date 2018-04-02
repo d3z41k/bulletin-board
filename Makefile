@@ -1,7 +1,7 @@
-docker-up:
+docker-up: sync-start
 	docker-compose up -d
 
-docker-down:
+docker-down: sync-stop
 	docker-compose down
 
 docker-build:
@@ -24,6 +24,12 @@ assets-watch:
 
 memory:
 	sysctl -w vm.max_map_count=262144
+
+sync-start:
+	sudo docker-sync start
+
+sync-stop:
+	sudo docker-sync stop
 
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
