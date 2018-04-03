@@ -26,10 +26,10 @@ memory:
 	sysctl -w vm.max_map_count=262144
 
 sync-start:
-	sudo docker-sync start
+	docker-sync start
 
 sync-stop:
-	sudo docker-sync stop
+	docker-sync stop
 
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
