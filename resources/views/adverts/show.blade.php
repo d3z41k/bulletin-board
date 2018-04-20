@@ -110,6 +110,8 @@
 
                 <div id="map" style="width: 100%; height: 250px"></div>
 
+
+
                 <script src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
 
                 <script type='text/javascript'>
