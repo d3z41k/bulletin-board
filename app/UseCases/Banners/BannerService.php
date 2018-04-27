@@ -99,7 +99,7 @@ class BannerService
         if (!$banner->canBeChanged()) {
             throw new \DomainException('Unable to edit the banner.');
         }
-        Storage::delete('public/' . $banner->file);
+        Storage::disk('public')->delete($banner->file);
         $banner->update([
             'format' => $request['format'],
             'file' => $request->file('file')->store('banners', 'public'),
@@ -184,13 +184,13 @@ class BannerService
             throw new \DomainException('Unable to remove the banner.');
         }
         $banner->delete();
-        Storage::delete('public/' . $banner->file);
+        Storage::disk('public')->delete($banner->file);
     }
 
     public function removeByAdmin($id): void
     {
         $banner = $this->getBanner($id);
         $banner->delete();
-        Storage::delete('public/' . $banner->file);
+        Storage::disk('public')->delete($banner->file);
     }
 }
